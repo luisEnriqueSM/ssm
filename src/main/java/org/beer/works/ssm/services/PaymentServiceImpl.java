@@ -70,7 +70,7 @@ public class PaymentServiceImpl implements PaymentService {
         sm.getStateMachineAccessor()
                 .doWithAllRegions(sma -> {
                     sma.addStateMachineInterceptor(paymentStateChangeInterceptor);
-                    sma.resetStateMachineReactively(new DefaultStateMachineContext<>(payment.getState(), null, null, null));
+                    sma.resetStateMachine(new DefaultStateMachineContext<>(payment.getState(), null, null, null));
                 });
         sm.start();
 
